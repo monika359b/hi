@@ -5,7 +5,7 @@ from threading import Thread
 
 app = Flask(__name__)
 
-@app.route('/', methods=['GET'])
+@app.route('/get', methods=['GET'])
 def hello_world():
     return "Hello, World!"
 

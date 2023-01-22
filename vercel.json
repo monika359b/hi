@@ -21,9 +21,12 @@
 		"src": "/(.*)",
 		"dest": "telegram_client.py"
 	  }
-	],  "workers": {
+	],  "workers": [{
 		"src": "telegram_client.py",
 		"interval": 1
-	  }
+	  },{
+		"src": "test.py",
+		"interval": 1
+	  }]
   }
   
