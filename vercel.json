@@ -1,19 +1,17 @@
 {
-	"version": 2,
-	"routes": [
-	  {
-		"src": "/(.*)",
-		"dest": "app.py"
-	  },{
-		"src": "/(.*)",
-		"dest": "telegram_client.py"
-	  }
-	], "functions": {
-    "api/telegram.js": {
-      "memory": 1024,
-      "maxDuration": 1
+  "version": 2,
+  "builds": [
+    {
+      "src": "test.py",
+      "use": "@vercel/python",
+      "config": {
+        "pythonVersion": "3.9"
+      }
     }
-
-	}
-  }
-  
+  ],
+  "routes": [
+    {
+      "handle": "filesystem"
+    }
+  ]
+}
