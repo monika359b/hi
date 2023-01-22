@@ -12,7 +12,7 @@ async def main():
     async def my_event_handler(event):
         print(event)
         if event.message.from_id.user_id == 5832858184:
-               if '#AD' in event.message.message or '#PaidAD' in event.message.message or 'bots.business/ads' in event.message.message '#paidAD' in event.message.message or 'sponsored' in event.message.message:
+               if '#AD' in event.message.message or '#PaidAD' in event.message.message or 'bots.business/ads' in event.message.message or '#paidAD' in event.message.message or 'sponsored' in event.message.message:
                 print(event)
                 await client.delete_messages(event.message.peer_id.user_id, event.message.id)
                 print('message deleted successfully')
