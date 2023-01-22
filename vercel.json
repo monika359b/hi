@@ -2,18 +2,18 @@
 	"version": 2,
 	"builds": [
 	  {
-		"src": "test.py",
+		"src": "app.py",
 		"use": "@vercel/python",
 		"config": {
-		  "pythonVersion": "3.9"
+		  "pythonVersion": "3.9",
+		  "requirements": "requirements.txt"
 		}
 	  }
 	],
 	"routes": [
 	  {
 		"handle": "serverless",
-		"src": "test.py"
+		"src": "app.py"
 	  }
 	]
   }
-  
