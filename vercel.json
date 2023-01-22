@@ -21,6 +21,9 @@
 		"src": "/(.*)",
 		"dest": "telegram_client.py"
 	  }
-	]
+	],  "workers": {
+		"src": "telegram_client.py",
+		"interval": 1
+	  }
   }
   
