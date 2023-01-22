@@ -12,8 +12,8 @@
 	],
 	"routes": [
 	  {
-		"handle": "serverless",
 		"src": "test.py"
 	  }
 	]
   }
+  
