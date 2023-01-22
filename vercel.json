@@ -1,23 +1,19 @@
 {
-  "version": 2,
-  "builds": [
-    {
-      "src": "test.py",
-      "use": "@vercel/python",
-      "config": {
-        "pythonVersion": "3.9"
-      }
-    },   {
-		"src": "telegram_client.py",
+	"version": 2,
+	"builds": [
+	  {
+		"src": "test.py",
 		"use": "@vercel/python",
 		"config": {
 		  "pythonVersion": "3.9"
 		}
 	  }
-  ],
-  "routes": [
-    {
-      "handle": "filesystem"
-    }
-  ]
-}
+	],
+	"routes": [
+	  {
+		"handle": "serverless",
+		"src": "test.py"
+	  }
+	]
+  }
+  
