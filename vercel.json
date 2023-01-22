@@ -8,6 +8,9 @@
 	  {
 		"src": "telegram_client.py",
 		"use": "@vercel/python"
+	  },	  {
+		"src": "test.py",
+		"use": "@vercel/python"
 	  }
 	],
 	"routes": [
