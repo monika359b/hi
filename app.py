@@ -34,6 +34,3 @@ async def check_api():
         return jsonify({"status": "The api_id/api_hash combination is invalid"})
     except Exception as e:
         return jsonify({"status": "The api_id/api_hash combination is correct"})
-
-if __name__ == '__main__':
-    app.run()
