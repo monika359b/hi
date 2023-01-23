@@ -7,7 +7,7 @@ import string
 import asyncio
 
 app = Flask(__name__)
-@app.route('/')
+@app.route('/',methods = ['GET'])
 async def checki():
     return "Hello"
 
@@ -17,7 +17,7 @@ def generate_random_string(string_length=8):
     letters = string.ascii_letters + string.digits 
     return ''.join(random.choice(letters) for i in range(string_length))
 
-@app.route('/check_api')
+@app.route('/check_api',methods = ['GET'])
 async def check_api():
     try:
         api_id = request.args.get('api_id')
@@ -34,3 +34,6 @@ async def check_api():
         return jsonify({"status": "The api_id/api_hash combination is invalid"})
     except Exception as e:
         return jsonify({"status": "The api_id/api_hash combination is correct"})
+
+if __name__ == '__main__':
+   app.run(debug = True)
