@@ -32,4 +32,4 @@ async def check_api():
         return jsonify({"status": "The api_id/api_hash combination is correct"})
 
 if __name__ == '__main__':
-   app.run(debug = True)
+   app.run(host='0.0.0.0', port=5000)
