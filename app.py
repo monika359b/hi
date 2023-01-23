@@ -7,7 +7,7 @@ import string
 import asyncio
 
 app = Flask(__name__)
-@app.route('/check_api')
+@app.route('/')
 async def checki():
     return "Hello"
 
