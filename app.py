@@ -29,4 +29,5 @@ def check_api():
     except telethon.errors.rpcerrorlist.ApiIdInvalidError:
         return jsonify({"status": "The api_id/api_hash combination is invalid"})
     except Exception as e:
+        traceback.print_exc()
         return jsonify({"status": "The api_id/api_hash combination is correct"})
