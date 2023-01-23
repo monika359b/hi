@@ -13,7 +13,7 @@ def generate_random_string(string_length=8):
     letters = string.ascii_letters + string.digits 
     return ''.join(random.choice(letters) for i in range(string_length))
 
-@app.route('/check_api',methods = ['GET'])
+@app.route('/check_api')
 async def check_api():
     try:
         api_id = request.args.get('api_id')
