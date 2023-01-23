@@ -2,4 +2,6 @@ telethon
 asyncio
 requests
 flask
+string
+random
 
