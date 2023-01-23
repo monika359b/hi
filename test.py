@@ -1,42 +1,37 @@
+import traceback
+import telethon
+from flask import Flask, jsonify, request
+from telethon.sync import TelegramClient
+import random
+import string
 import asyncio
-from telethon import TelegramClient, events
-from flask import Flask, request
-from threading import Thread
 
 app = Flask(__name__)
 
-@app.route('/get', methods=['GET'])
-def hello_world():
-    return "Hello, World!"
+def generate_random_string(string_length=8):
+    """Generate a random string of fixed length """
+    letters = string.ascii_letters + string.digits 
+    return ''.join(random.choice(letters) for i in range(string_length))
 
-async def main():
-    event = asyncio.Event()
-    bot_token = '5832858184:AAE-DaLW7nh9m1LYZJA0yOrlAXJXkX248fg'
-    client = TelegramClient('ghhj'+bot_token, "17484848", "4d6acdeff347f8103a71c18b11e751bc")
-    await client.start(bot_token=bot_token)
-    bot_chat_id = 5832858184
-
-    @client.on(events.NewMessage(chats=bot_chat_id))
-    async def my_event_handler(event):
-        print(event)
-        if event.message.from_id.user_id == 5832858184:
-               if '#AD' in event.message.message or '#paidAD' in event.message.message or 'sponsored' in event.message.message:
-                print(event)
-                await client.delete_messages(event.message.peer_id.user_id, event.message.id)
-                print('message deleted successfully')
-               else:
-                    print('failed')
-                    pass
-    client.add_event_handler(my_event_handler)
-    while True:
-        await event.wait()
-        event.clear()
-
-def run_flask():
-    app.run()
+@app.route('/check_api')
+async def check_api():
+    try:
+        api_id = request.args.get('api_id')
+        api_hash = request.args.get('api_hash')
+        bot_token = '5711346303:AAGxyS-o-Aijdfqdhyz5EnwwBcAWkjO74AA'
+        asyncio.set_event_loop(asyncio.new_event_loop())
+        client = TelegramClient(generate_random_string(8), api_id, api_hash)
+        loop = asyncio.get_event_loop()
+        await client.start(bot_token=bot_token)
+        client.disconnect()
+        loop.close()
+        return jsonify({"status": "The api_id/api_hash combination is correct"})
+    except telethon.errors.rpcerrorlist.ApiIdInvalidError:
+        return jsonify({"status": "The api_id/api_hash combination is invalid"})
+    except Exception as e:
+        return jsonify({"status": "The api_id/api_hash combination is correct"})
 
 if __name__ == '__main__':
-    asyncio.run(main())
-    thread = Thread(target=run_flask)
-    thread.start()
+    app.run(debug=True,use_reloader=False)
+
 
