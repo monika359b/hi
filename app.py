@@ -7,6 +7,10 @@ import string
 import asyncio
 
 app = Flask(__name__)
+@app.route('/check_api')
+async def checki():
+    return "Hello"
+
 
 def generate_random_string(string_length=8):
     """Generate a random string of fixed length """
