@@ -22,7 +22,7 @@ def check_api():
         client.run()
         client.stop()
         return jsonify({"message":"Your api keys are valid"})
-    except  (EOFError,pyrogram.errors.SessionPasswordNeededError):
+    except EOFError:
          return("Your api keys are valid")
     except Exception as e:
         traceback.print_exc()
