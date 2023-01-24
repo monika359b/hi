@@ -25,3 +25,5 @@ def check_api():
     except Exception as e:
         traceback.print_exc()
         return("Your api keys are not valid")
+    except EOFError:
+         return("Your api keys are valid")
