@@ -21,7 +21,7 @@ def check_api():
         client = pyrogram.Client(generate_random_string(8), api_id, api_hash)
         client.run()
         client.stop()
-        return jsonify({"status": "The api_id/api_hash combination is correct"})
+        return jsonify({message:"Your api keys are valid"})
     except Exception as e:
         traceback.print_exc()
-        return jsonify({"status": "The api_id/api_hash combination is invalid"})
+        return jsonify({message:"Your api keys are not valid"})
