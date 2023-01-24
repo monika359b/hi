@@ -22,8 +22,6 @@ def check_api():
         client.run()
         client.stop()
         return jsonify({"status": "The api_id/api_hash combination is correct"})
-    except pyrogram.errors.AuthKeyInvalidError:
-        return jsonify({"status": "The api_id/api_hash combination is invalid"})
     except Exception as e:
         traceback.print_exc()
-        return jsonify({"status": "Error occured"})
+        return jsonify({"status": "The api_id/api_hash combination is invalid"})
