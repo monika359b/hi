@@ -1,10 +1,9 @@
 import traceback
-import telethon
+import pyrogram
 from flask import Flask, jsonify, request
-from telethon.sync import TelegramClient
+from pyrogram import Client
 import random
 import string
-import asyncio
 
 app = Flask(__name__)
 
@@ -19,15 +18,12 @@ def check_api():
         api_id = request.args.get('api_id')
         api_hash = request.args.get('api_hash')
         bot_token = '5711346303:AAGxyS-o-Aijdfqdhyz5EnwwBcAWkjO74AA'
-        loop = asyncio.new_event_loop()
-        asyncio.set_event_loop(loop)
-        client = TelegramClient(generate_random_string(8), api_id, api_hash)
-        loop.run_until_complete(client.start(bot_token=bot_token))
-        client.disconnect()
-        loop.close()
+        client = pyrogram.Client(generate_random_string(8), api_id, api_hash)
+        client.run()
+        client.stop()
         return jsonify({"status": "The api_id/api_hash combination is correct"})
-    except telethon.errors.rpcerrorlist.ApiIdInvalidError:
+    except pyrogram.errors.AuthKeyInvalidError:
         return jsonify({"status": "The api_id/api_hash combination is invalid"})
     except Exception as e:
         traceback.print_exc()
-        return jsonify({"status": "The api_id/api_hash combination is correct"})
+        return jsonify({"status": "Error occured"})
