@@ -24,4 +24,4 @@ def check_api():
         return jsonify({"message":"Your api keys are valid"})
     except Exception as e:
         traceback.print_exc()
-        return "Your api keys are not valid"
+        return("Your api keys are not valid")
